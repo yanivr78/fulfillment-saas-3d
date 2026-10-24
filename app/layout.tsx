@@ -2,9 +2,9 @@ import type { ReactNode } from 'react';
 import './globals.css';
 
 export const metadata = {
-  title: 'NexusOps 3PL — Multi-Tenant Fulfillment & Warehouse Control Tower',
+  title: 'The Realm of Yaniv Ron — 3D Galactic Command & Control Tower',
   description:
-    'Enterprise multi-tenant 3PL fulfillment, warehouse bin management, conservation-locked inventory, ASN receiving, scan-verified picking, carrier webhooks, and event-metered billing.',
+    'Welcome to The Realm of Yaniv Ron: Interactive 3D Spatial Command Center, X-Wing Squadron Telemetry, Imperial March Audio Engine, and Live Holonet Community Wall.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

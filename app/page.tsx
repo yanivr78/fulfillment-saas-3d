@@ -2,6 +2,8 @@ import React from 'react';
 import Warehouse3DScene from './components/Warehouse3DScene';
 import ControlTowerDemo from './components/ControlTowerDemo';
 import Tilt3DCard from './components/Tilt3DCard';
+import StarWarsAudioAndXWingEngine from './components/StarWarsAudioAndXWingEngine';
+import RealmPostWall from './components/RealmPostWall';
 
 interface MetricCard {
   label: string;
@@ -11,9 +13,9 @@ interface MetricCard {
 
 const SUMMARY_METRICS: MetricCard[] = [
   {
-    label: '3D Spatial Digital Twin & RLS',
-    value: '12 Racks • 4 AMRs • Live RLS Lens',
-    detail: 'Real-time 60fps 3D volumetric rack ledger with tenant-isolated PostgreSQL RLS filtering',
+    label: 'The Realm of Yaniv Ron • 3D Twin',
+    value: '12 High-Bay Racks • X-Wing Patrol',
+    detail: 'Real-time 60fps 3D volumetric rack ledger guarded by Red Squadron X-Wing flybys & Imperial March audio',
   },
   {
     label: 'Sellable Inventory Conservation',
@@ -21,12 +23,12 @@ const SUMMARY_METRICS: MetricCard[] = [
     detail: 'Immutable movement ledger with idempotency keys and row-locked reservations',
   },
   {
-    label: 'Inbound ASN & AMR Putaway',
-    value: 'ASN -> Quarantine -> 3D Putaway',
-    detail: 'Received units stay quarantined until autonomous scan-verified putaway into STORAGE bins',
+    label: 'Holonet Community Broadcast Wall',
+    value: 'Live Realm Post Form & Feed',
+    detail: 'Visitors and commanders can post transmissions directly onto the dedicated Realm Wall',
   },
   {
-    label: 'Outbound Order & Carrier Pipeline',
+    label: 'Outbound Order & Starfighter Pipeline',
     value: 'ALLOCATED -> PICKED -> PACKED -> SHIPPED',
     detail: '100-way concurrent allocation protection + HMAC-verified carrier webhooks',
   },
@@ -71,10 +73,16 @@ const WORKFLOW_MODULES = [
 
 const BENTO_FEATURES = [
   {
-    tag: 'Zero-Oversell Guarantee',
-    title: 'Mathematical Inventory Conservation',
+    tag: 'Galactic Soundtrack & Starfighters',
+    title: 'Imperial March Synth & X-Wing Squadron Flybys',
     description:
-      'Every warehouse SKU balance enforces available = on_hand - reserved - quarantined - damaged >= 0 inside serialized row locks with mandatory Idempotency-Key deduplication.',
+      'Launches with a polyphonic Web Audio synthesizer playing the Star Wars Imperial March while 3D X-Wings streak across the viewport with Doppler twin-ion turbine roar and quad laser cannon blasts.',
+  },
+  {
+    tag: 'Interactive Holonet Wall',
+    title: 'Live Realm Post Form & Community Feed',
+    description:
+      'Publish decrees, status updates, and messages directly to The Realm of Yaniv Ron. Every new post triggers an immediate X-Wing celebratory flyby.',
   },
   {
     tag: 'Spatial Digital Twin',
@@ -83,16 +91,16 @@ const BENTO_FEATURES = [
       'Orbit, zoom, and inspect every multi-tier storage rack and autonomous robot in real time with volumetric bin state visualization and orbital laser allocation beams.',
   },
   {
+    tag: 'Zero-Oversell Guarantee',
+    title: 'Mathematical Inventory Conservation',
+    description:
+      'Every warehouse SKU balance enforces available = on_hand - reserved - quarantined - damaged >= 0 inside serialized row locks with mandatory Idempotency-Key deduplication.',
+  },
+  {
     tag: 'Defense-in-Depth Isolation',
     title: 'Dual-Layer Tenant & PostgreSQL RLS',
     description:
       'Requests are authorized at the Fastify RBAC guard by merchant/warehouse grants and enforced in PostgreSQL via FORCE ROW LEVEL SECURITY (app.tenant_id).',
-  },
-  {
-    tag: 'Inbound Quality Gate',
-    title: 'Quarantine-First ASN Receiving',
-    description:
-      'Dock receipts increment on_hand and quarantined simultaneously—preventing premature order allocation until floor operators scan-verify putaway into STORAGE bins.',
   },
   {
     tag: 'Cryptographic Edge Security',
@@ -100,20 +108,14 @@ const BENTO_FEATURES = [
     description:
       'Timestamp-windowed replay protection and HMAC signature verification feed an immutable transactional outbox with consumer-deduplicated relay.',
   },
-  {
-    tag: 'Automated 3PL Monetization',
-    title: 'Event-Metered Activity Billing',
-    description:
-      'Every storage putaway, pick confirmation, label dispatch, and RMA inspection automatically records auditable tenant/merchant billing ledger events.',
-  },
 ];
 
 const PRICING_TIERS = [
   {
-    name: 'Growth 3PL Node',
+    name: 'Outer Rim Outpost',
     price: '$490',
     period: '/month',
-    subtitle: 'For emerging fulfillment centers scaling multi-merchant 3D operations.',
+    subtitle: 'For emerging fulfillment centers joining The Realm of Yaniv Ron.',
     featured: false,
     highlights: [
       'Up to 2 Warehouse Facilities & 15 Merchants',
@@ -125,10 +127,10 @@ const PRICING_TIERS = [
     cta: 'Launch 3D Twin',
   },
   {
-    name: 'Enterprise 3D Control Tower',
+    name: 'Imperial Citadel Control Tower',
     price: '$1,490',
     period: '/month',
-    subtitle: 'For high-volume multi-node 3PL networks requiring real-time 3D telemetry & billing automation.',
+    subtitle: 'For high-volume multi-node 3PL networks requiring real-time 3D telemetry & X-Wing escort.',
     featured: true,
     highlights: [
       'Unlimited Warehouses, 3D Storage Bins & AMR Fleet',
@@ -140,10 +142,10 @@ const PRICING_TIERS = [
     cta: 'Explore 3D Control Tower',
   },
   {
-    name: 'Dedicated Sovereign Cloud',
+    name: 'Sovereign Core Sector',
     price: 'Custom',
     period: 'deployment',
-    subtitle: 'Single-tenant VPC or on-premise hardware for regulated logistics operators.',
+    subtitle: 'Single-tenant VPC or on-premise hardware for regulated galactic operators.',
     featured: false,
     highlights: [
       'Dedicated PostgreSQL Cluster with Custom RLS Policies',
@@ -152,36 +154,39 @@ const PRICING_TIERS = [
       'Zero-Cloud Local AI Review & Compliance Gate',
       'Full Source & Migration Auditability',
     ],
-    cta: 'Contact Architecture Team',
+    cta: 'Post on the Realm Wall',
   },
 ];
 
 export default function Home() {
   return (
     <div>
+      {/* Star Wars Imperial March Audio Synthesizer + Periodic 3D X-Wing Flyby Engine */}
+      <StarWarsAudioAndXWingEngine />
+
       {/* Navigation */}
       <nav className="navbar" aria-label="Primary Navigation">
         <div className="container navbar-inner">
           <div className="brand">
-            <span className="brand-mark">3D</span>
-            <span>NexusOps 3D • Fulfillment Twin</span>
+            <span className="brand-mark">YR</span>
+            <span>The Realm of Yaniv Ron</span>
           </div>
 
           <div className="nav-links">
             <a href="#spatial-twin">3D Digital Twin</a>
-            <a href="#control-tower">Control Tower Simulator</a>
+            <a href="#realm-wall">Post to the Realm</a>
+            <a href="#control-tower">Control Tower</a>
             <a href="#capabilities">3D Architecture</a>
-            <a href="#api-surface">API Surface</a>
-            <a href="#pricing">Pricing</a>
+            <a href="#pricing">Tiers</a>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <span className="status-pill">
               <span className="status-dot" />
-              3D Spatial Engine Live
+              Imperial March & X-Wings Active
             </span>
-            <a href="#spatial-twin" className="btn btn-primary btn-sm">
-              Enter 3D Warehouse
+            <a href="#realm-wall" className="btn btn-primary btn-sm">
+              Post on the Realm Wall
             </a>
           </div>
         </div>
@@ -191,22 +196,23 @@ export default function Home() {
         {/* Hero Section */}
         <header className="hero">
           <div className="hero-badge">
-            <span>🌐 Interactive 3D Spatial Digital Twin • Multi-Tenant 3PL Control Tower</span>
+            <span>⚔️ Welcome to The Realm of Yaniv Ron • Imperial March Audio + X-Wing Squadron Patrol</span>
           </div>
           <h1 className="hero-title">
-            Spatial 3D Warehouse & <span className="gradient-text">Fulfillment Control Tower</span>
+            The Realm of <span className="gradient-text">Yaniv Ron</span>
           </h1>
           <p className="hero-subtitle">
-            Orbit your live 3D warehouse floor in 60fps, inspect volumetric high-bay storage bins under PostgreSQL
-            Row-Level Security, dispatch autonomous mobile robots, and trigger 100-way atomic order allocations.
+            Experience the interactive 60fps 3D Galactic Warehouse & Fulfillment Command Citadel. Listen to the Star
+            Wars Imperial March on launch, watch X-Wing starfighters streak across the skies with twin-ion turbine &
+            laser cannon audio, and post your own transmissions to the Realm Wall below.
           </p>
 
           <div className="hero-actions">
-            <a href="#spatial-twin" className="btn btn-primary">
-              Interact with 3D Digital Twin ↓
+            <a href="#realm-wall" className="btn btn-primary">
+              📡 Post a Message to The Realm ↓
             </a>
-            <a href="#control-tower" className="btn btn-secondary">
-              Open RBAC & Webhook Console
+            <a href="#spatial-twin" className="btn btn-secondary">
+              🌐 Orbit 3D Command Citadel
             </a>
           </div>
 
@@ -228,7 +234,7 @@ export default function Home() {
                 fontWeight: 700,
               }}
             >
-              3D Spatial Invariants & Deterministic Controls (Hover to Tilt in 3D)
+              Galactic Invariants & 3D Telemetry (Hover Cards to Tilt in 3D)
             </h2>
             <div className="kpi-strip">
               {SUMMARY_METRICS.map((card) => (
@@ -252,6 +258,22 @@ export default function Home() {
           </section>
         </header>
 
+        {/* Dedicated User Post Form & Community Wall Section */}
+        <section id="realm-wall" className="section" aria-labelledby="realm-wall-heading">
+          <div className="section-header">
+            <div className="section-eyebrow">Holonet Community Dispatch</div>
+            <h2 id="realm-wall-heading" className="section-title">
+              The Realm of Yaniv Ron — Public Transmission Wall
+            </h2>
+            <p className="section-desc">
+              Use the form below to publish decrees, messages, or squadron dispatches directly onto the website. Every
+              new post scrambles an X-Wing squadron flyby with spacecraft sounds!
+            </p>
+          </div>
+
+          <RealmPostWall />
+        </section>
+
         {/* Interactive Control Tower Section */}
         <section id="control-tower" className="section" aria-labelledby="tower-heading">
           <div className="section-header">
@@ -273,11 +295,11 @@ export default function Home() {
           <div className="section-header">
             <div className="section-eyebrow">Engineered for High-Trust Logistics</div>
             <h2 id="bento-heading" className="section-title">
-              Six 3D Pillars of Deterministic Fulfillment
+              Six 3D Pillars of The Realm of Yaniv Ron
             </h2>
             <p className="section-desc">
-              Every card below responds in 3D perspective space—built from the ground up to eliminate race conditions,
-              cross-tenant leakage, and unbilled warehouse activity.
+              Every card below responds in 3D perspective space—combining Star Wars audio-visual immersion with
+              deterministic multi-tenant 3PL architecture.
             </p>
           </div>
 
@@ -341,12 +363,13 @@ export default function Home() {
         {/* Pricing Section with 3D Tilt Cards */}
         <section id="pricing" className="section" aria-labelledby="pricing-heading">
           <div className="section-header">
-            <div className="section-eyebrow">Predictable 3PL Economics</div>
+            <div className="section-eyebrow">Galactic 3PL Economics</div>
             <h2 id="pricing-heading" className="section-title">
-              Scale From Single 3D Warehouse to Global Fulfillment Network
+              Scale Across The Realm of Yaniv Ron
             </h2>
             <p className="section-desc">
-              Start small with a single warehouse digital twin and expand seamlessly as your merchant volume grows.
+              Start small with an Outer Rim warehouse node and expand seamlessly to a full Imperial Citadel Control
+              Tower.
             </p>
           </div>
 
@@ -393,7 +416,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="#spatial-twin"
+                  href="#realm-wall"
                   className={`btn ${tier.featured ? 'btn-primary' : 'btn-secondary'}`}
                   style={{ width: '100%' }}
                 >
@@ -409,7 +432,7 @@ export default function Home() {
       <footer
         style={{
           borderTop: '1px solid rgba(148, 163, 184, 0.14)',
-          padding: '2.5rem 0',
+          padding: '2.5rem 0 5rem',
           marginTop: '3rem',
           color: '#64748b',
           fontSize: '0.85rem',
@@ -420,10 +443,10 @@ export default function Home() {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}
         >
           <div>
-            <strong style={{ color: '#e2e8f0' }}>NexusOps 3D — Spatial Fulfillment Digital Twin</strong> • Multi-Tenant
-            3PL Infrastructure
+            <strong style={{ color: '#e2e8f0' }}>The Realm of Yaniv Ron</strong> • 3D Spatial Command Citadel, Imperial
+            March Synth & X-Wing Squadron Telemetry
           </div>
-          <div>Repository: yanivr78/fulfillment-saas-3d • Built with Next.js, TypeScript & HTML5 3D Canvas</div>
+          <div>Repository: yanivr78/the-realm-of-yaniv-ron • Built with Next.js, TypeScript & Web Audio API</div>
         </div>
       </footer>
     </div>
