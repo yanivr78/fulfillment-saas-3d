@@ -30,7 +30,11 @@ jobs:
         run: npm install
 
       - name: Build static export
-        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /fulfillment-saas-web
+        run: |
+          npm run build
+          touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
