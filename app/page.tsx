@@ -1,5 +1,7 @@
 import React from 'react';
+import Warehouse3DScene from './components/Warehouse3DScene';
 import ControlTowerDemo from './components/ControlTowerDemo';
+import Tilt3DCard from './components/Tilt3DCard';
 
 interface MetricCard {
   label: string;
@@ -9,9 +11,9 @@ interface MetricCard {
 
 const SUMMARY_METRICS: MetricCard[] = [
   {
-    label: 'Active Tenants & RBAC Scopes',
-    value: 'RLS + Scoped Grants',
-    detail: 'Tenant-isolated memberships with warehouse and merchant role boundaries',
+    label: '3D Spatial Digital Twin & RLS',
+    value: '12 Racks • 4 AMRs • Live RLS Lens',
+    detail: 'Real-time 60fps 3D volumetric rack ledger with tenant-isolated PostgreSQL RLS filtering',
   },
   {
     label: 'Sellable Inventory Conservation',
@@ -19,9 +21,9 @@ const SUMMARY_METRICS: MetricCard[] = [
     detail: 'Immutable movement ledger with idempotency keys and row-locked reservations',
   },
   {
-    label: 'Inbound ASN & Putaway',
-    value: 'ASN -> Quarantine -> Putaway',
-    detail: 'Received units stay quarantined until verified putaway into STORAGE bins',
+    label: 'Inbound ASN & AMR Putaway',
+    value: 'ASN -> Quarantine -> 3D Putaway',
+    detail: 'Received units stay quarantined until autonomous scan-verified putaway into STORAGE bins',
   },
   {
     label: 'Outbound Order & Carrier Pipeline',
@@ -39,7 +41,7 @@ const WORKFLOW_MODULES = [
   },
   {
     phase: 'P2',
-    name: 'Warehouses, Bins, Catalog & ASN Receiving',
+    name: 'Warehouses, 3D Bins, Catalog & ASN Receiving',
     endpoints:
       'POST/GET /api/v1/warehouses, POST/GET /api/v1/skus, POST /api/v1/asns, POST /api/v1/putaway-tasks/:id/complete',
     status: 'Active',
@@ -75,6 +77,12 @@ const BENTO_FEATURES = [
       'Every warehouse SKU balance enforces available = on_hand - reserved - quarantined - damaged >= 0 inside serialized row locks with mandatory Idempotency-Key deduplication.',
   },
   {
+    tag: 'Spatial Digital Twin',
+    title: 'Interactive 3D High-Bay & AMR Telemetry',
+    description:
+      'Orbit, zoom, and inspect every multi-tier storage rack and autonomous robot in real time with volumetric bin state visualization and orbital laser allocation beams.',
+  },
+  {
     tag: 'Defense-in-Depth Isolation',
     title: 'Dual-Layer Tenant & PostgreSQL RLS',
     description:
@@ -85,12 +93,6 @@ const BENTO_FEATURES = [
     title: 'Quarantine-First ASN Receiving',
     description:
       'Dock receipts increment on_hand and quarantined simultaneously—preventing premature order allocation until floor operators scan-verify putaway into STORAGE bins.',
-  },
-  {
-    tag: 'High-Throughput Floor Execution',
-    title: 'Scan-Verified Pick, Pack & Ship',
-    description:
-      'Guided bin-to-carton workflows verify barcode scans at every state transition before dispatching idempotent carrier shipping labels.',
   },
   {
     tag: 'Cryptographic Edge Security',
@@ -111,31 +113,31 @@ const PRICING_TIERS = [
     name: 'Growth 3PL Node',
     price: '$490',
     period: '/month',
-    subtitle: 'For emerging fulfillment centers scaling multi-merchant operations.',
+    subtitle: 'For emerging fulfillment centers scaling multi-merchant 3D operations.',
     featured: false,
     highlights: [
       'Up to 2 Warehouse Facilities & 15 Merchants',
-      'Conservation-Locked Inventory Ledger',
+      '3D Spatial Rack Visualizer & Conservation Ledger',
       'ASN Quarantine & Guided Putaway',
       'Standard Carrier Webhooks (FedEx, UPS, USPS, DHL)',
       'Immutable Audit Trail (90-Day Retention)',
     ],
-    cta: 'Start 14-Day Sandbox',
+    cta: 'Launch 3D Twin',
   },
   {
-    name: 'Enterprise Control Tower',
+    name: 'Enterprise 3D Control Tower',
     price: '$1,490',
     period: '/month',
-    subtitle: 'For high-volume multi-node 3PL networks requiring strict SLAs & billing automation.',
+    subtitle: 'For high-volume multi-node 3PL networks requiring real-time 3D telemetry & billing automation.',
     featured: true,
     highlights: [
-      'Unlimited Warehouses, Storage Bins & Merchants',
+      'Unlimited Warehouses, 3D Storage Bins & AMR Fleet',
       '100-Way Concurrent Order Reservation Engine',
       'PostgreSQL RLS + Scoped Warehouse/Merchant RBAC',
       'Transactional Outbox Relay & Event-Metered 3PL Billing',
       'RMA Returns Disposition & 7-Year Audit Retention',
     ],
-    cta: 'Launch Control Tower',
+    cta: 'Explore 3D Control Tower',
   },
   {
     name: 'Dedicated Sovereign Cloud',
@@ -145,7 +147,7 @@ const PRICING_TIERS = [
     featured: false,
     highlights: [
       'Dedicated PostgreSQL Cluster with Custom RLS Policies',
-      'Hardware Barcode Scanner & WMS ERP Bridges',
+      'Hardware Barcode Scanner, AMR & WMS ERP Bridges',
       'Custom SLA (99.995%) & 24/7 Principal Engineer Channel',
       'Zero-Cloud Local AI Review & Compliance Gate',
       'Full Source & Migration Auditability',
@@ -161,14 +163,14 @@ export default function Home() {
       <nav className="navbar" aria-label="Primary Navigation">
         <div className="container navbar-inner">
           <div className="brand">
-            <span className="brand-mark">NX</span>
-            <span>Fullfillment SaaS</span>
+            <span className="brand-mark">3D</span>
+            <span>NexusOps 3D • Fulfillment Twin</span>
           </div>
 
           <div className="nav-links">
-            <a href="#control-tower">Interactive Control Tower</a>
-            <a href="#invariants">Invariants</a>
-            <a href="#capabilities">Architecture</a>
+            <a href="#spatial-twin">3D Digital Twin</a>
+            <a href="#control-tower">Control Tower Simulator</a>
+            <a href="#capabilities">3D Architecture</a>
             <a href="#api-surface">API Surface</a>
             <a href="#pricing">Pricing</a>
           </div>
@@ -176,10 +178,10 @@ export default function Home() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <span className="status-pill">
               <span className="status-dot" />
-              All 3PL Nodes Operational
+              3D Spatial Engine Live
             </span>
-            <a href="#control-tower" className="btn btn-primary btn-sm">
-              Try Live Simulator
+            <a href="#spatial-twin" className="btn btn-primary btn-sm">
+              Enter 3D Warehouse
             </a>
           </div>
         </div>
@@ -189,26 +191,31 @@ export default function Home() {
         {/* Hero Section */}
         <header className="hero">
           <div className="hero-badge">
-            <span>⚡ Next-Gen Multi-Tenant 3PL Platform • Fastify 5 + Next.js 16 + PostgreSQL RLS</span>
+            <span>🌐 Interactive 3D Spatial Digital Twin • Multi-Tenant 3PL Control Tower</span>
           </div>
           <h1 className="hero-title">
-            Fullfillment SaaS — <span className="gradient-text">Operations Control Tower</span>
+            Spatial 3D Warehouse & <span className="gradient-text">Fulfillment Control Tower</span>
           </h1>
           <p className="hero-subtitle">
-            Multi-tenant 3PL warehouse, inventory conservation, receiving, order fulfillment, shipping, and returns
-            platform engineered for zero oversells and cryptographic auditability.
+            Orbit your live 3D warehouse floor in 60fps, inspect volumetric high-bay storage bins under PostgreSQL
+            Row-Level Security, dispatch autonomous mobile robots, and trigger 100-way atomic order allocations.
           </p>
 
           <div className="hero-actions">
-            <a href="#control-tower" className="btn btn-primary">
-              Launch Interactive Warehouse Simulator →
+            <a href="#spatial-twin" className="btn btn-primary">
+              Interact with 3D Digital Twin ↓
             </a>
-            <a href="#api-surface" className="btn btn-secondary">
-              Explore Protected API Surface
+            <a href="#control-tower" className="btn btn-secondary">
+              Open RBAC & Webhook Console
             </a>
           </div>
 
-          {/* Summary Metrics / Platform Invariants */}
+          {/* Interactive 3D Digital Twin Stage */}
+          <section id="spatial-twin" aria-label="Interactive 3D Warehouse Digital Twin" style={{ textAlign: 'left' }}>
+            <Warehouse3DScene />
+          </section>
+
+          {/* Summary Metrics / Platform Invariants with 3D Tilt Cards */}
           <section id="invariants" aria-labelledby="metrics-heading" style={{ textAlign: 'left', marginTop: '2rem' }}>
             <h2
               id="metrics-heading"
@@ -221,11 +228,11 @@ export default function Home() {
                 fontWeight: 700,
               }}
             >
-              Platform Invariants & Operational Controls
+              3D Spatial Invariants & Deterministic Controls (Hover to Tilt in 3D)
             </h2>
             <div className="kpi-strip">
               {SUMMARY_METRICS.map((card) => (
-                <article key={card.label} className="kpi-card">
+                <Tilt3DCard key={card.label} className="kpi-card" intensity={12}>
                   <h3 style={{ fontSize: '0.88rem', color: '#94a3b8', fontWeight: 600 }}>{card.label}</h3>
                   <p
                     style={{
@@ -239,7 +246,7 @@ export default function Home() {
                     {card.value}
                   </p>
                   <p style={{ fontSize: '0.82rem', color: '#64748b' }}>{card.detail}</p>
-                </article>
+                </Tilt3DCard>
               ))}
             </div>
           </section>
@@ -248,39 +255,39 @@ export default function Home() {
         {/* Interactive Control Tower Section */}
         <section id="control-tower" className="section" aria-labelledby="tower-heading">
           <div className="section-header">
-            <div className="section-eyebrow">Live Product Sandbox</div>
+            <div className="section-eyebrow">Interactive Protocol Sandbox</div>
             <h2 id="tower-heading" className="section-title">
-              Test Drive the Operations Control Tower
+              Operations Control Tower, RBAC Scope & Webhook Console
             </h2>
             <p className="section-desc">
-              Simulate dock-to-stock ASN receiving, putaway verification, atomic order reservations, floor scan-picking,
-              and multi-tenant PostgreSQL RLS boundaries right in your browser.
+              Step orders through Pick → Pack → Ship, switch PostgreSQL RLS principals, and inspect signed carrier
+              webhook payloads.
             </p>
           </div>
 
           <ControlTowerDemo />
         </section>
 
-        {/* Architectural Capabilities Bento Grid */}
+        {/* Architectural Capabilities 3D Bento Grid */}
         <section id="capabilities" className="section" aria-labelledby="bento-heading">
           <div className="section-header">
             <div className="section-eyebrow">Engineered for High-Trust Logistics</div>
             <h2 id="bento-heading" className="section-title">
-              Six Pillars of Deterministic Fulfillment
+              Six 3D Pillars of Deterministic Fulfillment
             </h2>
             <p className="section-desc">
-              Built from the ground up to eliminate race conditions, cross-tenant leakage, and unbilled warehouse
-              activity.
+              Every card below responds in 3D perspective space—built from the ground up to eliminate race conditions,
+              cross-tenant leakage, and unbilled warehouse activity.
             </p>
           </div>
 
           <div className="bento-grid">
             {BENTO_FEATURES.map((feat) => (
-              <article key={feat.title} className="bento-card">
+              <Tilt3DCard key={feat.title} className="bento-card" intensity={10}>
                 <span className="bento-tag">{feat.tag}</span>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.5rem' }}>{feat.title}</h3>
                 <p style={{ fontSize: '0.9rem', color: '#94a3b8' }}>{feat.description}</p>
-              </article>
+              </Tilt3DCard>
             ))}
           </div>
         </section>
@@ -331,21 +338,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section */}
+        {/* Pricing Section with 3D Tilt Cards */}
         <section id="pricing" className="section" aria-labelledby="pricing-heading">
           <div className="section-header">
             <div className="section-eyebrow">Predictable 3PL Economics</div>
             <h2 id="pricing-heading" className="section-title">
-              Scale From Single Warehouse to Global Fulfillment Network
+              Scale From Single 3D Warehouse to Global Fulfillment Network
             </h2>
             <p className="section-desc">
-              Start small with a single warehouse node and expand seamlessly as your merchant volume grows.
+              Start small with a single warehouse digital twin and expand seamlessly as your merchant volume grows.
             </p>
           </div>
 
           <div className="pricing-grid">
             {PRICING_TIERS.map((tier) => (
-              <article key={tier.name} className={`pricing-card ${tier.featured ? 'featured' : ''}`}>
+              <Tilt3DCard
+                key={tier.name}
+                className={`pricing-card ${tier.featured ? 'featured' : ''}`}
+                intensity={8}
+                glowColor={tier.featured ? 'rgba(56, 189, 248, 0.35)' : 'rgba(148, 163, 184, 0.2)'}
+              >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>{tier.name}</h3>
@@ -381,13 +393,13 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="#control-tower"
+                  href="#spatial-twin"
                   className={`btn ${tier.featured ? 'btn-primary' : 'btn-secondary'}`}
                   style={{ width: '100%' }}
                 >
                   {tier.cta}
                 </a>
-              </article>
+              </Tilt3DCard>
             ))}
           </div>
         </section>
@@ -408,10 +420,10 @@ export default function Home() {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}
         >
           <div>
-            <strong style={{ color: '#e2e8f0' }}>Fullfillment SaaS — Operations Control Tower</strong> • Multi-Tenant
+            <strong style={{ color: '#e2e8f0' }}>NexusOps 3D — Spatial Fulfillment Digital Twin</strong> • Multi-Tenant
             3PL Infrastructure
           </div>
-          <div>Repository: yanivr78/fulfillment-saas-web • Built with Next.js & TypeScript</div>
+          <div>Repository: yanivr78/fulfillment-saas-3d • Built with Next.js, TypeScript & HTML5 3D Canvas</div>
         </div>
       </footer>
     </div>
